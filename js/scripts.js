@@ -15,6 +15,10 @@ function scrollTo(node, direction) {
     })
 }
 
+function renderData(dataset) {
+    console.log(dataset)
+}
+
 document.querySelectorAll('.scrollDown').forEach(button => {
     button.addEventListener('click', function() {
         scrollTo(this, 'down')
@@ -29,6 +33,15 @@ document.querySelectorAll('.scrollUp').forEach(button => {
 
 document.querySelectorAll('.statBtn').forEach(button => {
     button.addEventListener('click', function() {
-        this.parentNode.querySelector('.statistics') ? this.parentNode.querySelector('.statistics').classList.toggle('openend') : this.parentNode.parentNode.querySelector('.statistics').classList.toggle('openend')
+        let section = this.parentNode.querySelector('.statistics') ? this.parentNode : this.parentNode.parentNode
+        section.classList.toggle('openend')
+        
+        if (!statistics.getAttribute('class').includes('openend')) {
+            // Remove the data if the statistics pane is closed. Maybe wait half a second to do this?
+            return
+        }
+
+        // Grabbing the id of the section to match with the right data set for rendering the data.
+        renderData(statistics.parentNode.getAttribute('id'))
     })
 })

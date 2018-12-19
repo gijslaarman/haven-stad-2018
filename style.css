@@ -15,6 +15,10 @@ h1, h2 {
 h2 {
   font-size: 1.5rem; }
 
+body {
+  width: 100vw;
+  overflow-x: hidden; }
+
 *, *:before, *:after {
   margin: 0;
   box-sizing: border-box;
@@ -22,7 +26,8 @@ h2 {
 
 .scroll-wrapper {
   scroll-snap-type: y mandatory;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   height: 100vh; }
 
 .section {
@@ -30,7 +35,8 @@ h2 {
   width: 100vw;
   scroll-snap-align: start;
   position: relative;
-  overflow: hidden; }
+  left: 0;
+  transition: left 600ms; }
   .section button {
     position: absolute;
     left: 50%;
@@ -40,6 +46,8 @@ h2 {
     color: black;
     padding: 0;
     cursor: pointer; }
+    .section button:focus {
+      outline: none; }
     .section button:hover {
       color: black;
       border-bottom: 1px solid red;
@@ -73,13 +81,13 @@ h2 {
   .section .statistics {
     height: 100vh;
     width: 100vw;
-    position: absolute;
+    position: relative;
     background-color: #f3f3f3;
     left: 100vw;
     transition: left 700ms;
     padding: 4rem; }
-    .section .statistics.openend {
-      left: 0vw; }
+  .section.openend {
+    left: -100vw; }
 
 #intro {
   display: flex;
