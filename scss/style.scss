@@ -1,4 +1,126 @@
+@import 'text';
+
+// White: white
+// Red: red
+$lightgrey: #f3f3f3;
+
 *, *:before, *:after {
     margin: 0;
     box-sizing: border-box;
+    font-family: 'AvenirNext-regular';
+}
+
+.scroll-wrapper {
+    scroll-snap-type: y mandatory;
+    overflow: auto;
+    height: 100vh;
+}
+
+.section {
+    height: 100vh;
+    width: 100vw;
+    scroll-snap-align: start;
+    position: relative;
+    overflow: hidden;
+
+    button {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0);
+        border: none;
+        background: none;
+        color: black;
+        padding: 0;
+        cursor: pointer;
+
+        &:hover {
+            color: black;
+            border-bottom: 1px solid red;
+            color: red;
+        }
+    }
+
+    .scrollUp {
+        top: 10%;
+    }
+    .scrollDown {
+        bottom: 10%;
+    }
+
+    .statBtn.show {
+        left: 90%;
+        top: 50%;
+        transform: translate(0, -50%);
+        border-radius: 50%;
+        height: 60px;
+        width: 60px;
+        background-color: white;
+
+        &:hover {
+            color: black;
+            border: none;
+        }
+    }
+
+    .statBtn.close {
+        left: calc(100% - 4.6rem);
+        line-height: 0;
+        top: 4rem;
+
+        svg {
+            width: 1.2rem;
+            height: auto;
+        }
+
+        &:hover {
+            border: none;
+
+            svg {
+                fill: red;
+            }
+        }
+    }
+
+    .statistics {
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        background-color: $lightgrey;
+        left: 100vw;
+        transition: left 700ms;
+        padding: 4rem;
+
+        &.openend {
+            left: 0vw;
+        }
+    }
+}
+
+#intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        margin-bottom: 8rem;
+        font-size: 2.5rem;
+
+        span {
+            font-size: inherit;
+            font-family: inherit;
+            letter-spacing: -0.12rem;
+        }
+    }
+}
+
+#housing {
+    background-color: rgba(161, 57, 57, 0.5);
+}
+
+#health {
+    background-color: rgba(57, 128, 161, 0.5);
+}
+
+#conclusion {
+    background-color: rgba(161, 154, 57, 0.5);
 }
